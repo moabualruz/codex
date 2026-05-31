@@ -1,5 +1,13 @@
 # Rust/codex-rs
 
+## Fork Branch Policy
+
+- `main` is reserved as a faithful mirror of `upstream/main` from `https://github.com/openai/codex.git`. Do not commit fork-specific work directly to `main`.
+- `mo/main` is the fork working branch and should be the default branch for `origin` (`git@github.com:moabualruz/codex.git`). Put fork-specific work there and base fork feature branches on `mo/main`.
+- Keep local Git configured so `main` tracks `upstream/main` and `mo/main` tracks `origin/mo/main`. Prefer rebasing fork work after syncing upstream: sync `main` from `upstream/main`, then rebase `mo/main` on `main`.
+- For upstream contributions, branch from a freshly synced `main`; do not open upstream PRs from `mo/main` or any branch containing fork-only commits. If a fork change should go upstream, cherry-pick or rebase that topic onto `main` first.
+- Do not push rewrites to shared branches without explicit confirmation in the current turn. Rebasing already-published `mo/main` requires `git push --force-with-lease`, so confirm before doing it.
+
 In the codex-rs folder where the rust code lives:
 
 - Crate names are prefixed with `codex-`. For example, the `core` folder's crate is named `codex-core`
